@@ -135,7 +135,7 @@ public class MainController {
 			sucursalService.save(s);
 			sucursales = sucursalService.findAll();
 			mav.addObject("sucursales",sucursales);
-			mav.setViewName("main");
+			mav.setViewName("redirect:/prueba");
 		}
 		return mav;
 	}
@@ -193,4 +193,18 @@ public class MainController {
 		mav.setViewName("main");
 		return mav;
 	}
+	
+	@RequestMapping(value="/delete",method=RequestMethod.POST)
+	public ModelAndView delete(@RequestParam(value="code") Integer code) {
+		ModelAndView mav = new ModelAndView();
+		List<Sucursal> sucursales = null;
+		sucursalService.delete(code);
+		sucursales = sucursalService.findAll();
+		mav.addObject("code", code);
+		mav.addObject("sucursales",sucursales);
+		//mav.setViewName("main");
+		mav.setViewName("redirect:/prueba");
+		return mav; 
+	}
+	
 }

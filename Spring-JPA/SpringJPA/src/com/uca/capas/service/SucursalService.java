@@ -13,4 +13,6 @@ public interface SucursalService {
 	public Sucursal findOne(Integer codigo) throws DataAccessException;
 
 	public Sucursal save(Sucursal s)  throws DataAccessException;
+	
+	public void delete(Integer id);
 }

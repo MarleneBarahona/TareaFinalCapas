@@ -33,4 +33,10 @@ public class SucursalServiceImpl implements SucursalService{
 		return sRepo.save(s);
 	}
 
+	@Override
+	public void delete(Integer id) {
+		// TODO Auto-generated method stub
+		sRepo.deleteById(id);
+	}
+
 }

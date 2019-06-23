@@ -50,7 +50,7 @@
 					</form>
 					</td>
 					<td>
-					<form action="${pageContext.request.contextPath}/update" method="post">
+					<form action="${pageContext.request.contextPath}/delete" method="post">
 						<input type="hidden" value="${sucursales.cSucursal}" name="code">
 						<input type="submit" value="eliminar">
 					</form>
