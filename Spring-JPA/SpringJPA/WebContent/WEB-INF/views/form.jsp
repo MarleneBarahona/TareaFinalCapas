@@ -15,11 +15,17 @@
 		<label>Nombre : </label>
 		<form:input type="text" name="nombre" path="sNombre" value="${sucursales.sNombre}"/><br>
 		
-		<label>Horario : </label>
+		<label>Ubicacion: </label>
+		<form:input type="text" name="ubicacion" path="sUbicacion" value="${sucursales.sUbicacion}"/><br>
+		
+		<label>Horario: </label>
 		<form:input type="text" name="horario" path="sHorarios" value="${sucursales.sHorarios}"/><br>
 		
 		<label>Numero de mesas : </label>
 		<form:input type="number" name="mesas" path="sNmesas" value="${sucursales.sNmesas}"/><br>
+			
+		<label>Gerente: </label>
+		<form:input type="text" name="gerente" path="sNomGerente" value="${sucursales.sNomGerente}"/><br>
 			
 		<input type="submit" value="Guardar">
 	</form:form>

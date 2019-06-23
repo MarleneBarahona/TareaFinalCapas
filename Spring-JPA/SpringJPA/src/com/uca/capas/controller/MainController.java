@@ -104,10 +104,18 @@ public class MainController {
 	@RequestMapping(value="/save",method=RequestMethod.POST)
 	public ModelAndView insert() {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("student",new Student());
+		mav.addObject("sucursales",new Sucursal());
+		//mav.addObject("student",new Student());
 		mav.setViewName("form");
 		return mav; 
 	}
+	/*@RequestMapping(value="/save",method=RequestMethod.POST)
+	public ModelAndView insert() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("student",new Student());
+		mav.setViewName("form");
+		return mav; 
+	}*/
 	@RequestMapping(value="/update",method=RequestMethod.POST)
 	public ModelAndView update(@RequestParam(value="code") Integer code) {
 		ModelAndView mav = new ModelAndView();

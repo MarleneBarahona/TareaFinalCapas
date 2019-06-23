@@ -37,6 +37,7 @@
 					<td>${sucursales.sUbicacion}</td>
 					<td>${sucursales.sHorarios}</td>
 					<td>${sucursales.sNmesas}</td>
+					<td>${sucursales.sNomGerente}</td>
 					<td>
 					<form action="${pageContext.request.contextPath}/update" method="post">
 						<input type=hidden value="${sucursales.cSucursal}" name="code">
