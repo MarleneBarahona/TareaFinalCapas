@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>LOGIN</h1>
-	<form action="${pageContext.request.contextPath}/verificar" method="post">
+	<form action="${pageContext.request.contextPath}/prueba" method="post">
 	<input type="text" placeholder="Ingrese correo" name="email">
 	<input type="text" placeholder="Ingrese contrasena" name="password">
 	<input type="submit" value="Entrar">

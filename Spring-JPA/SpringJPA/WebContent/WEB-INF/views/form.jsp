@@ -9,22 +9,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<form:form  action="${pageContext.request.contextPath}/formData" method="POST" modelAttribute="student">
+		<form:form  action="${pageContext.request.contextPath}/formData" method="POST" modelAttribute="sucursal">
 		
-		<form:input type="hidden" name="code" path="cStudent" value="${student.cStudent}" />
+		<form:input type="hidden" name="code" path="cSucursal" value="${sucursales.cSucursal}" />
 	
 		<label>Ingrese un nombre : </label>
-		<form:input type="text" name="name" path="sName" value="${student.sName}"/><br>
+		<form:input type="text" name="nombre" path="sNombre" value="${sucursales.sNombre}"/><br>
 		
 		<label>Ingrese un apellido : </label>
-		<form:input type="text" name="lname" path="lName" value="${student.lName}"/><br>
+		<form:input type="text" name="horario" path="sHorarios" value="${sucursales.sHorarios}"/><br>
 		
 		<label>Ingrese edad : </label>
-		<form:input type="number" name="age" path="sAge" value="${student.sAge}"/><br>
-		
-		<Label>Estado del estudiante</Label><br>
-		<form:radiobutton name="status" path="bActivo" value="true"/><label>Activo</label><br>
-		<form:radiobutton name="status" path="bActivo" value="false"/><label>Inactivo</label><br>
+		<form:input type="number" name="mesas" path="sNmesas" value="${sucursales.sNmesas}"/><br>
 			
 		<input type="submit" value="Agregar estudiante">
 	</form:form>

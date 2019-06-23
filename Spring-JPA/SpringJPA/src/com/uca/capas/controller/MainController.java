@@ -17,9 +17,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.uca.capas.dao.StudentDAO;
 import com.uca.capas.domain.Student;
+import com.uca.capas.domain.Sucursal;
 import com.uca.capas.repositories.StudentRepository;
 import com.uca.capas.service.StudentService;
 import com.uca.capas.service.StudentServiceImpl;
+import com.uca.capas.service.SucursalService;
 
 /*import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;*/
@@ -39,6 +41,9 @@ public class MainController {
 	private StudentService sService;
 	
 	@Autowired
+	private SucursalService sucursalService;
+	
+	@Autowired
 	private StudentRepository studentRepo;
 	
 	//Controlador principal
@@ -47,17 +52,42 @@ public class MainController {
 		log.info("Entrando a funcion init-main " + log.getName());
 		ModelAndView mav = new ModelAndView();
 		List<Student> students = null;
+		//List<Sucursal> sucursales = null;
 		try {
 		//Selecciono todos los elementos de la tabla student
 		 //students = studentDao.findAll();
+		//sucursales = sucursalService.findAll();
 		 students = sService.findAll();
 			log.info("Termino de buscar en la base de datos");
 		}
 		catch(Exception e){
 			log.log(Level.SEVERE,"Exception Occur",e);
 		}
+		//mav.addObject("students",sucursales);
 		mav.addObject("students",students);
 		mav.setViewName("main");
+		return mav;
+	}
+	
+	@RequestMapping("/prueba")
+	public ModelAndView prueba(){
+		log.info("Entrando a funcion init-main " + log.getName());
+		ModelAndView mav = new ModelAndView();
+		//List<Student> students = null;
+		List<Sucursal> sucursales = null;
+		try {
+		//Selecciono todos los elementos de la tabla student
+		 //students = studentDao.findAll();
+			sucursales = sucursalService.findAll();
+		 //students = sService.findAll();
+			log.info("Termino de buscar en la base de datos");
+		}
+		catch(Exception e){
+			log.log(Level.SEVERE,"Exception Occur",e);
+		}
+		mav.addObject("sucursales",sucursales);
+		//mav.addObject("students",students);
+		mav.setViewName("prueba");
 		return mav;
 	}
 	
@@ -78,14 +108,22 @@ public class MainController {
 		mav.setViewName("form");
 		return mav; 
 	}
-	
 	@RequestMapping(value="/update",method=RequestMethod.POST)
+	public ModelAndView update(@RequestParam(value="code") Integer code) {
+		ModelAndView mav = new ModelAndView();
+		Sucursal sucursal = new Sucursal();
+		sucursal = sucursalService.findOne(code);
+		mav.addObject("sucursales",sucursal);
+		mav.setViewName("form");
+		return mav; 
+	}
+/*	@RequestMapping(value="/update",method=RequestMethod.POST)
 	public ModelAndView update(@RequestParam(value="code") Integer code) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("student",studentDao.findOne(code));
 		mav.setViewName("form");
 		return mav; 
-	}
+	}*/
 	
 	@RequestMapping(value="/formData")
 	public ModelAndView save(@ModelAttribute Student s) {
