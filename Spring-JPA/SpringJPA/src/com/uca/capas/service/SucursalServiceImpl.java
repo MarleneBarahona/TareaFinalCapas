@@ -27,4 +27,10 @@ public class SucursalServiceImpl implements SucursalService{
 		return sRepo.findById(codigo).get();
 	}
 
+	@Override
+	public Sucursal save(Sucursal s) throws DataAccessException {
+		// TODO Auto-generated method stub
+		return sRepo.save(s);
+	}
+
 }

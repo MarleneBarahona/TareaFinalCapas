@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -123,8 +124,22 @@ public class MainController {
 		mav.setViewName("form");
 		return mav; 
 	}*/
-	
 	@RequestMapping(value="/formData")
+	public ModelAndView save(@ModelAttribute("sucursales") Sucursal s,BindingResult result) {
+		ModelAndView mav = new ModelAndView();
+		if(result.hasErrors()) {
+			mav.setViewName("form");
+		}
+		else {
+			List<Sucursal> sucursales = null;
+			sucursalService.save(s);
+			sucursales = sucursalService.findAll();
+			mav.addObject("sucursales",sucursales);
+			mav.setViewName("main");
+		}
+		return mav;
+	}
+	/*@RequestMapping(value="/formData")
 	public ModelAndView save(@ModelAttribute Student s) {
 		ModelAndView mav = new ModelAndView();
 		List<Student> students = null;
@@ -147,8 +162,7 @@ public class MainController {
 		mav.addObject("students",students);
 		mav.setViewName("main");
 		return mav;
-		
-	}
+	}*/
 	
 	//Controlador que implementa Spring Data
 	@RequestMapping(value = "/searchBy",method = RequestMethod.POST)

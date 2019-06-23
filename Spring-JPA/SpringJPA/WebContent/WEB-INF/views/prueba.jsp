@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SpringJPA</title>
+<title>Sucursales</title>
 </head>
 <body>
 	<form action="${pageContext.request.contextPath}/search" method = "post">
@@ -39,7 +39,7 @@
 					<td>${sucursales.sNmesas}</td>
 					<td>
 					<form action="${pageContext.request.contextPath}/update" method="post">
-						<input type="text" value="${sucursales.cSucursal}" name="code">
+						<input type=hidden value="${sucursales.cSucursal}" name="code">
 						<input type="submit" value="ver perfil">
 					</form>
 					</td>

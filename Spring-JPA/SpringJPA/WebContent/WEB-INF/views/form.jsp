@@ -6,12 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Editar sucursal</title>
 </head>
 <body>
 	<h1>Editar sucursal</h1>
 	<form:form  action="${pageContext.request.contextPath}/formData" method="POST" modelAttribute="sucursales">
-		<form:input type="" name="code" path="cSucursal" value="${sucursales.cSucursal}" />
+		<form:input type="hidden" name="code" path="cSucursal" value="${sucursales.cSucursal}" />
 		<label>Nombre : </label>
 		<form:input type="text" name="nombre" path="sNombre" value="${sucursales.sNombre}"/><br>
 		
