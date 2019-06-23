@@ -18,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.uca.capas.dao.StudentDAO;
 import com.uca.capas.domain.Student;
 import com.uca.capas.repositories.StudentRepository;
+import com.uca.capas.service.StudentService;
+import com.uca.capas.service.StudentServiceImpl;
 
 /*import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;*/
@@ -34,6 +36,9 @@ public class MainController {
 	private StudentDAO studentDao;
 	
 	@Autowired
+	private StudentService sService;
+	
+	@Autowired
 	private StudentRepository studentRepo;
 	
 	//Controlador principal
@@ -44,8 +49,9 @@ public class MainController {
 		List<Student> students = null;
 		try {
 		//Selecciono todos los elementos de la tabla student
-		 students = studentDao.findAll();
-		 log.info("Termino de buscar en la base de datos");
+		 //students = studentDao.findAll();
+		 students = sService.findAll();
+			log.info("Termino de buscar en la base de datos");
 		}
 		catch(Exception e){
 			log.log(Level.SEVERE,"Exception Occur",e);
@@ -121,5 +127,19 @@ public class MainController {
 		return mav; 
 	}
 	
-
+	//Controlador login
+	@RequestMapping(value="/login")
+	public ModelAndView login() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("login");
+		return mav;
+	}
+	//Controlador verificar
+	@RequestMapping(value="/verificar")
+	public ModelAndView verificar() {
+		//aca debe ir el proceso para verificar que si son credenciales correctas
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("main");
+		return mav;
+	}
 }
