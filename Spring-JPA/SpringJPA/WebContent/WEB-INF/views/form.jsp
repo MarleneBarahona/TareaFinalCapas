@@ -9,20 +9,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<form:form  action="${pageContext.request.contextPath}/formData" method="POST" modelAttribute="sucursal">
-		
-		<form:input type="hidden" name="code" path="cSucursal" value="${sucursales.cSucursal}" />
-	
-		<label>Ingrese un nombre : </label>
+	<h1>Editar sucursal</h1>
+	<form:form  action="${pageContext.request.contextPath}/formData" method="POST" modelAttribute="sucursales">
+		<form:input type="" name="code" path="cSucursal" value="${sucursales.cSucursal}" />
+		<label>Nombre : </label>
 		<form:input type="text" name="nombre" path="sNombre" value="${sucursales.sNombre}"/><br>
 		
-		<label>Ingrese un apellido : </label>
+		<label>Horario : </label>
 		<form:input type="text" name="horario" path="sHorarios" value="${sucursales.sHorarios}"/><br>
 		
-		<label>Ingrese edad : </label>
+		<label>Numero de mesas : </label>
 		<form:input type="number" name="mesas" path="sNmesas" value="${sucursales.sNmesas}"/><br>
 			
-		<input type="submit" value="Agregar estudiante">
+		<input type="submit" value="Guardar">
 	</form:form>
 </body>
 </html>

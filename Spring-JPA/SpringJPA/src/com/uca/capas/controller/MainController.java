@@ -69,7 +69,7 @@ public class MainController {
 		return mav;
 	}
 	
-	@RequestMapping("/prueba")
+	@RequestMapping(value="/prueba")
 	public ModelAndView prueba(){
 		log.info("Entrando a funcion init-main " + log.getName());
 		ModelAndView mav = new ModelAndView();
@@ -97,7 +97,6 @@ public class MainController {
 	public Student search(@RequestParam(value = "code") Integer code) {
 		Student student = studentDao.findOne(code);
 		return student;
-		
 	}
 	
 	//Controlador que lleva a formulario
@@ -111,9 +110,9 @@ public class MainController {
 	@RequestMapping(value="/update",method=RequestMethod.POST)
 	public ModelAndView update(@RequestParam(value="code") Integer code) {
 		ModelAndView mav = new ModelAndView();
-		Sucursal sucursal = new Sucursal();
-		sucursal = sucursalService.findOne(code);
-		mav.addObject("sucursales",sucursal);
+		Sucursal sucursales = new Sucursal();
+		sucursales = sucursalService.findOne(code);
+		mav.addObject("sucursales",sucursales);
 		mav.setViewName("form");
 		return mav; 
 	}
