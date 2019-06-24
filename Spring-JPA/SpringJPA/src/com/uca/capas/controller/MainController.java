@@ -150,13 +150,9 @@ public class MainController {
 			mav.setViewName("formEmpleado");
 		}
 		else {
-			//List<Sucursal> sucursales = null;
 			List<Empleado> empleados = null;
-			//sucursalService.save(s);
 			empleadosService.save(e);
-			//sucursales = sucursalService.findAll();
 			empleados = empleadosService.findAll();
-			//mav.addObject("sucursales",sucursales);
 			mav.addObject("empleados", empleados);
 			mav.setViewName("redirect:/verEmpleados");
 		}

@@ -14,7 +14,7 @@
 	</font>
 	<font color="#2856A1" face="calibri,arial">
 		<form:form  action="${pageContext.request.contextPath}/formDataEmpleado" method="POST" modelAttribute="empleados">
-			<form:input type="hidden" name="code" path="cSucursal" value="${empleados.cEmpleado}" />
+			<form:input type="hidden" name="code" path="cEmpleado" value="${empleados.cEmpleado}" />
 			<label>Nombre : </label>
 			<form:input type="text" name="nombre" path="eNombre" value="${empleados.eNombre}"/><br>
 			
