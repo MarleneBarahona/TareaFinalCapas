@@ -19,7 +19,6 @@ import com.uca.capas.domain.Student;
 import com.uca.capas.domain.Sucursal;
 import com.uca.capas.repositories.StudentRepository;
 import com.uca.capas.service.StudentService;
-import com.uca.capas.service.StudentServiceImpl;
 import com.uca.capas.service.SucursalService;
 
 /*import org.apache.commons.logging.Log;
@@ -199,7 +198,13 @@ public class MainController {
 		mav.setViewName("main");
 		return mav;
 	}
-	
+	@RequestMapping(value="/volver")
+	public ModelAndView volver() {
+		//aca debe ir el proceso para verificar que si son credenciales correctas
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/prueba");
+		return mav;
+	}
 	@RequestMapping(value="/delete",method=RequestMethod.POST)
 	public ModelAndView delete(@RequestParam(value="code") Integer code) {
 		ModelAndView mav = new ModelAndView();
@@ -217,7 +222,10 @@ public class MainController {
 	public ModelAndView verPerfil(@RequestParam(value="code") Integer code) {
 		ModelAndView mav = new ModelAndView();
 		Sucursal sucursales = new Sucursal();
+		//List<Empleado> empleados = null;
 		sucursales = sucursalService.findOne(code);
+		//empleados = sucursalService.findOne(code).getEmpleados();
+		//mav.addObject("empleados", empleados);
 		mav.addObject("sucursales",sucursales);
 		mav.setViewName("perfil");
 		return mav; 

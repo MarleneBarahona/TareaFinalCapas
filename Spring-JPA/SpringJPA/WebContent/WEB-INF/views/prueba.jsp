@@ -9,56 +9,49 @@
 <title>Sucursales</title>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath}/search" method = "post">
-	<label>Busqueda por codigo: </label><input type="number" placeholder="Ingrese codigo" name="code">
-	<input type="submit" value="Enviar">
-	</form>
-	
-	<form action="${pageContext.request.contextPath}/save" method = "post">
-	<input type="submit" value="Agregar un nuevo usuario">
-	</form>
-	
-	<form action="${pageContext.request.contextPath}/searchBy" method="post">
-	<input type="text" name="name" placeholder="Ingrese el nombre: ">
-	<input type="number" name="age" placeholder="Ingrese la edad: ">
-	<button type="submit">Buscar</button>
-	</form>
+	<font face="calibri,arial" color="#1C5FCD"> <h1>Bienvenido</h1></font>
+	<font color="#2856A1" face="calibri,arial">
 
-	<table>
-		<tr>
-			<th>Nombre</th>
-			<th>Ubicacion</th>
-			<th>Horario</th>
-			<th>Mesas</th>
-			<th>Gerente</th>
-		</tr>
-			<c:forEach items="${sucursales}" var="sucursales">
-				<tr>
-					<td>${sucursales.sNombre}</td>
-					<td>${sucursales.sUbicacion}</td>
-					<td>${sucursales.sHorarios}</td>
-					<td>${sucursales.sNmesas}</td>
-					<td>${sucursales.sNomGerente}</td>
-					<td>
-					<form action="${pageContext.request.contextPath}/perfil" method="post">
-						<input type=hidden value="${sucursales.cSucursal}" name="code">
-						<input type="submit" value="ver perfil">
-					</form>
-					</td>
-					<td>
-					<form action="${pageContext.request.contextPath}/update" method="post">
-						<input type="hidden" value="${sucursales.cSucursal}" name="code">
-						<input type="submit" value="editar">
-					</form>
-					</td>
-					<td>
-					<form action="${pageContext.request.contextPath}/delete" method="post">
-						<input type="hidden" value="${sucursales.cSucursal}" name="code">
-						<input type="submit" value="eliminar">
-					</form>
-					</td>
-				</tr>	
-			</c:forEach>
-	</table>
+		<form action="${pageContext.request.contextPath}/save" method = "post">
+		<input type="submit" value="Agregar una nueva sucursal"><br>
+		</form>
+		<h3>Listado de sucursales</h3>
+		<table>
+			<tr>
+				<th>Nombre</th>
+				<th>Ubicacion</th>
+				<th>Horario</th>
+				<th>Mesas</th>
+				<th>Gerente</th>
+			</tr>
+				<c:forEach items="${sucursales}" var="sucursales">
+					<tr>
+						<td>${sucursales.sNombre}</td>
+						<td>${sucursales.sUbicacion}</td>
+						<td>${sucursales.sHorarios}</td>
+						<td>${sucursales.sNmesas}</td>
+						<td>${sucursales.sNomGerente}</td>
+						<td>
+						<form action="${pageContext.request.contextPath}/perfil" method="post">
+							<input type=hidden value="${sucursales.cSucursal}" name="code">
+							<input type="submit" value="ver perfil">
+						</form>
+						</td>
+						<td>
+						<form action="${pageContext.request.contextPath}/update" method="post">
+							<input type="hidden" value="${sucursales.cSucursal}" name="code">
+							<input type="submit" value="editar">
+						</form>
+						</td>
+						<td>
+						<form action="${pageContext.request.contextPath}/delete" method="post">
+							<input type="hidden" value="${sucursales.cSucursal}" name="code">
+							<input type="submit" value="eliminar">
+						</form>
+						</td>
+					</tr>	
+				</c:forEach>
+		</table>
+	</font>
 </body>
 </html>

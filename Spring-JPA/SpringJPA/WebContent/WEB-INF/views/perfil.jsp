@@ -9,23 +9,35 @@
 <title>Perfil de sucursal</title>
 </head>
 <body>
-	<form:form action="${pageContext.request.contextPath}/formData" method="POST" modelAttribute="sucursales">
-		<form:input type="hidden" name="code" path="cSucursal" value="${sucursales.cSucursal}" />
-		
-		<h1>Perfil de sucursal <label>${sucursales.sNombre}</label></h1>
-		
-		<label>Ubicacion: </label>
-		<label>${sucursales.sUbicacion}</label><br>
-		
-		<label>Horario: </label>
-		<label>${sucursales.sHorarios}</label><br>
-		
-		<label>Numero de mesas : </label>
-		<label>${sucursales.sNmesas}</label><br>
+	<font face="calibri,arial" color="#2856A1">
+		<form:form action="${pageContext.request.contextPath}/formData" method="POST" modelAttribute="sucursales">
+			<form:input type="hidden" name="code" path="cSucursal" value="${sucursales.cSucursal}" />
 			
-		<label>Gerente: </label>
-		<label>${sucursales.sNomGerente}</label><br>
-	</form:form>
-	
+			<font face="calibri,arial" color="#1C5FCD">
+				<h1>Perfil de sucursal <label>${sucursales.sNombre}</label></h1>
+			</font>
+			
+			<label>Ubicacion: </label>
+			<label>${sucursales.sUbicacion}</label><br>
+			
+			<label>Horario: </label>
+			<label>${sucursales.sHorarios}</label><br>
+			
+			<label>Numero de mesas : </label>
+			<label>${sucursales.sNmesas}</label><br>
+				
+			<label>Gerente: </label>
+			<label>${sucursales.sNomGerente}</label><br>
+		</form:form>
+		<c:forEach items="${empleados}" var="empleados">
+					<tr>
+						<td>${empleados.nomEmp}</td>
+					</tr>
+		</c:forEach>
+		<form action="${pageContext.request.contextPath}/volver" method="post">
+			<input type="hidden" value="${sucursales.cSucursal}" name="code">
+			<input type="submit" value="volver">
+		</form>
+	</font>
 </body>
 </html>

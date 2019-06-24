@@ -7,11 +7,16 @@
 <title>Login</title>
 </head>
 <body>
-	<h1>LOGIN</h1>
-	<form action="${pageContext.request.contextPath}/prueba" method="post">
-	<input type="text" placeholder="Ingrese correo" name="email">
-	<input type="text" placeholder="Ingrese contrasena" name="password">
-	<input type="submit" value="Entrar">
-	</form>
+	<font face="calibri,arial" color="#1C5FCD">
+		<h1>LOGIN</h1>
+			<form action="${pageContext.request.contextPath}/prueba" method="post">
+				<label>Ingrese correo:</label><br>
+				<input type="text" placeholder="usuario@gmail.com" name="email"><br><br>
+				<label>Ingrese contrasena:</label><br>
+				<input type="password" placeholder="pass123" name="password"><br><br>
+				<input type="submit" value="Entrar">
+			</form>
+	</font>
+
 </body>
 </html>
