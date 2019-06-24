@@ -55,18 +55,14 @@ public class MainController {
 		log.info("Entrando a funcion init-main " + log.getName());
 		ModelAndView mav = new ModelAndView();
 		List<Student> students = null;
-		//List<Sucursal> sucursales = null;
 		try {
-		//Selecciono todos los elementos de la tabla student
-		 //students = studentDao.findAll();
-		//sucursales = sucursalService.findAll();
+		//Selecciono todos los elementos de la tabla
 		 students = sService.findAll();
 			log.info("Termino de buscar en la base de datos");
 		}
 		catch(Exception e){
 			log.log(Level.SEVERE,"Exception Occur",e);
 		}
-		//mav.addObject("students",sucursales);
 		mav.addObject("students",students);
 		mav.setViewName("main");
 		return mav;
@@ -76,20 +72,15 @@ public class MainController {
 	public ModelAndView prueba(){
 		log.info("Entrando a funcion init-main " + log.getName());
 		ModelAndView mav = new ModelAndView();
-		//List<Student> students = null;
 		List<Sucursal> sucursales = null;
 		try {
-		//Selecciono todos los elementos de la tabla student
-		 //students = studentDao.findAll();
 			sucursales = sucursalService.findAll();
-		 //students = sService.findAll();
 			log.info("Termino de buscar en la base de datos");
 		}
 		catch(Exception e){
 			log.log(Level.SEVERE,"Exception Occur",e);
 		}
 		mav.addObject("sucursales",sucursales);
-		//mav.addObject("students",students);
 		mav.setViewName("prueba");
 		return mav;
 	}
@@ -115,7 +106,6 @@ public class MainController {
 	public ModelAndView insertEmpleado() {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("empleados",new Empleado());
-		//mav.addObject("student",new Student());
 		mav.setViewName("formEmpleado");
 		return mav; 
 	}
@@ -128,13 +118,15 @@ public class MainController {
 		mav.setViewName("form");
 		return mav; 
 	}
-/*	@RequestMapping(value="/update",method=RequestMethod.POST)
-	public ModelAndView update(@RequestParam(value="code") Integer code) {
+	@RequestMapping(value="/updateEmpleado",method=RequestMethod.POST)
+	public ModelAndView updateEmpleado(@RequestParam(value="code") Integer code) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("student",studentDao.findOne(code));
-		mav.setViewName("form");
+		Empleado empleados = new Empleado();
+		empleados = empleadosService.findOne(code);
+		mav.addObject("empleados",empleados);
+		mav.setViewName("formEmpleado");
 		return mav; 
-	}*/
+	}
 	//controlador de introducir datos sucursal
 	@RequestMapping(value="/formData")
 	public ModelAndView save(@ModelAttribute("sucursales") Sucursal s,BindingResult result) {
@@ -216,6 +208,18 @@ public class MainController {
 		mav.addObject("sucursales",sucursales);
 		//mav.setViewName("main");
 		mav.setViewName("redirect:/prueba");
+		return mav; 
+	}
+	@RequestMapping(value="/deleteEmpleado",method=RequestMethod.POST)
+	public ModelAndView deleteEmpleado(@RequestParam(value="code") Integer code) {
+		ModelAndView mav = new ModelAndView();
+		List<Empleado> empleados = null;
+		empleadosService.delete(code);
+		empleados = empleadosService.findAll();
+		mav.addObject("code", code);
+		mav.addObject("empleados",empleados);
+		//mav.setViewName("main");
+		mav.setViewName("redirect:/verEmpleados");
 		return mav; 
 	}
 	

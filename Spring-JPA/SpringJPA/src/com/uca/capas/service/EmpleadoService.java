@@ -13,4 +13,6 @@ public interface EmpleadoService {
 	public Empleado findOne(Integer codigo) throws DataAccessException;
 	
 	public Empleado save(Empleado e)  throws DataAccessException;
+	
+	public void delete(Integer id);
 }

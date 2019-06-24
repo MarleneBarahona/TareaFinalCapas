@@ -33,4 +33,10 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 		return eRepo.save(e);
 	}
 
+	@Override
+	public void delete(Integer id) {
+		// TODO Auto-generated method stub
+		eRepo.deleteById(id);
+	}
+
 }

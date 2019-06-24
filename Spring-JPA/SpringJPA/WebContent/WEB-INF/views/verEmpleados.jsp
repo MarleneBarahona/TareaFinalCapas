@@ -29,20 +29,14 @@
 						<td>${empleados.eGenero}</td>
 						<td>${empleados.eEstado}</td>
 						<td>
-						<form action="${pageContext.request.contextPath}/perfil" method="post">
-							<input type=hidden value="nada" name="code">
-							<input type="submit" value="ver perfil">
-						</form>
-						</td>
-						<td>
-						<form action="${pageContext.request.contextPath}/update" method="post">
-							<input type="hidden" value="nada" name="code">
+						<form action="${pageContext.request.contextPath}/updateEmpleado" method="post">
+							<input type="hidden" value="${empleados.cEmpleado}" name="code">
 							<input type="submit" value="editar">
 						</form>
 						</td>
 						<td>
-						<form action="${pageContext.request.contextPath}/delete" method="post">
-							<input type="hidden" value="nada" name="code">
+						<form action="${pageContext.request.contextPath}/deleteEmpleado" method="post">
+							<input type="hidden" value="${empleados.cEmpleado}" name="code">
 							<input type="submit" value="eliminar">
 						</form>
 						</td>
