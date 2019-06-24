@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Editar sucursal</title>
+<title>Introducir informacion de sucursal</title>
 </head>
 <body>
 	<font face="calibri,arial" color="#1C5FCD">

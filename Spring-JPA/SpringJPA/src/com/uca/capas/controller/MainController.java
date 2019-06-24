@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.uca.capas.dao.StudentDAO;
+import com.uca.capas.domain.Empleado;
 import com.uca.capas.domain.Student;
 import com.uca.capas.domain.Sucursal;
 import com.uca.capas.repositories.StudentRepository;
+import com.uca.capas.service.EmpleadoService;
 import com.uca.capas.service.StudentService;
 import com.uca.capas.service.SucursalService;
 
@@ -40,6 +42,9 @@ public class MainController {
 	
 	@Autowired
 	private SucursalService sucursalService;
+	
+	@Autowired
+	private EmpleadoService empleadosService;
 	
 	@Autowired
 	private StudentRepository studentRepo;
@@ -106,13 +111,14 @@ public class MainController {
 		mav.setViewName("form");
 		return mav; 
 	}
-	/*@RequestMapping(value="/save",method=RequestMethod.POST)
-	public ModelAndView insert() {
+	@RequestMapping(value="/saveEmpleado",method=RequestMethod.POST)
+	public ModelAndView insertEmpleado() {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("student",new Student());
-		mav.setViewName("form");
+		mav.addObject("empleados",new Empleado());
+		//mav.addObject("student",new Student());
+		mav.setViewName("formEmpleado");
 		return mav; 
-	}*/
+	}
 	@RequestMapping(value="/update",method=RequestMethod.POST)
 	public ModelAndView update(@RequestParam(value="code") Integer code) {
 		ModelAndView mav = new ModelAndView();
@@ -129,6 +135,7 @@ public class MainController {
 		mav.setViewName("form");
 		return mav; 
 	}*/
+	//controlador de introducir datos sucursal
 	@RequestMapping(value="/formData")
 	public ModelAndView save(@ModelAttribute("sucursales") Sucursal s,BindingResult result) {
 		ModelAndView mav = new ModelAndView();
@@ -144,31 +151,25 @@ public class MainController {
 		}
 		return mav;
 	}
-	/*@RequestMapping(value="/formData")
-	public ModelAndView save(@ModelAttribute Student s) {
+	@RequestMapping(value="/formDataEmpleado")
+	public ModelAndView saveEmpleado(@ModelAttribute("empleados") Empleado e,BindingResult result) {
 		ModelAndView mav = new ModelAndView();
-		List<Student> students = null;
-		log.info(s.getcStudent()+"");
-		try {
-			if(s.getcStudent() == 1) {
-				log.info("Agrego un nuevo usuario. Codigo:");
-				//Agrego el nuevo usuario, el 1 representa que es una nueva instancia
-				studentDao.save(s, 1);	
-			}
-			else {
-				log.info("Actualizo el usuario");
-				studentDao.save(s,0);
-			}
-		}catch(Exception e){
-			log.info("Error:"+e.toString());
+		if(result.hasErrors()) {
+			mav.setViewName("formEmpleado");
 		}
-		students = studentDao.findAll();
-		log.info(students.get(0).getlName());
-		mav.addObject("students",students);
-		mav.setViewName("main");
+		else {
+			//List<Sucursal> sucursales = null;
+			List<Empleado> empleados = null;
+			//sucursalService.save(s);
+			empleadosService.save(e);
+			//sucursales = sucursalService.findAll();
+			empleados = empleadosService.findAll();
+			//mav.addObject("sucursales",sucursales);
+			mav.addObject("empleados", empleados);
+			mav.setViewName("redirect:/verEmpleados");
+		}
 		return mav;
-	}*/
-	
+	}
 	//Controlador que implementa Spring Data
 	@RequestMapping(value = "/searchBy",method = RequestMethod.POST)
 	public ModelAndView searchBy(@RequestParam(value = "name") String name,@RequestParam(value="age") Integer age) {
@@ -230,4 +231,26 @@ public class MainController {
 		mav.setViewName("perfil");
 		return mav; 
 	}
+	
+	@RequestMapping(value="/verEmpleados")
+	public ModelAndView verEmpleados(){
+		//log.info("Entrando a funcion init-main " + log.getName());
+		ModelAndView mav = new ModelAndView();
+		List<Empleado> empleados = null;
+		//List<Sucursal> sucursales = null;
+		try {
+		//Selecciono todos los elementos de la tabla 
+		//sucursales = sucursalService.findAll();
+		 empleados = empleadosService.findAll();
+			log.info("Termino de buscar en la base de datos");
+		}
+		catch(Exception e){
+			log.log(Level.SEVERE,"Exception Occur",e);
+		}
+		mav.addObject("empleados",empleados);
+		//mav.addObject("students",students);
+		mav.setViewName("verEmpleados");
+		return mav;
+	}
+	
 }

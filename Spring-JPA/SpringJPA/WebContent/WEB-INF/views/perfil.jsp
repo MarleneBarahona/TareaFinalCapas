@@ -34,6 +34,10 @@
 						<td>${empleados.nomEmp}</td>
 					</tr>
 		</c:forEach>
+		<form action="${pageContext.request.contextPath}/verEmpleados" method="post">
+			<input type="hidden" value="${sucursales.cSucursal}" name="code">
+			<input type="submit" value="ver empleados">
+		</form>
 		<form action="${pageContext.request.contextPath}/volver" method="post">
 			<input type="hidden" value="${sucursales.cSucursal}" name="code">
 			<input type="submit" value="volver">

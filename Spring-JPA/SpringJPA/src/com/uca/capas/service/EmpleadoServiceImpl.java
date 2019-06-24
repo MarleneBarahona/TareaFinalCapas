@@ -27,4 +27,10 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 		return eRepo.findById(codigo).get();
 	}
 
+	@Override
+	public Empleado save(Empleado e) throws DataAccessException {
+		// TODO Auto-generated method stub
+		return eRepo.save(e);
+	}
+
 }

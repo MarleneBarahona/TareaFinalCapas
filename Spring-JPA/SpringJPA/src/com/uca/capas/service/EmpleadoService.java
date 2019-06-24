@@ -11,4 +11,6 @@ public interface EmpleadoService {
 	public List<Empleado> findAll() throws DataAccessException;
 
 	public Empleado findOne(Integer codigo) throws DataAccessException;
+	
+	public Empleado save(Empleado e)  throws DataAccessException;
 }
