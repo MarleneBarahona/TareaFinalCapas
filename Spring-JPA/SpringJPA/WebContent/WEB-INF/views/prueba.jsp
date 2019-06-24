@@ -12,7 +12,7 @@
 	<font color="#2856A1" face="calibri,arial">
 		<h2>Listado de sucursales</h2>
 		<form action="${pageContext.request.contextPath}/save" method = "post">
-			<input type="submit" value="Agregar una nueva sucursal"><br>
+			<input type="submit" value="Agregar una nueva sucursal"><br><br>
 		</form>
 		<table>
 			<tr>

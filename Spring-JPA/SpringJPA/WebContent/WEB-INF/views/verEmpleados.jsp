@@ -11,12 +11,12 @@
 <body>
 	<font color="#2856A1" face="calibri,arial">
 
-		<form action="${pageContext.request.contextPath}/saveEmpleado" method = "post">
-			<input type="submit" value="Agregar una nuev empleado"><br>
-		</form>
 		<form action="${pageContext.request.contextPath}/volver" method="post">
 			<input type="hidden" value="${sucursales.cSucursal}" name="code">
-			<input type="submit" value="volver">
+			<input type="submit" value="volver a pagina principal"><br><br>
+		</form>
+				<form action="${pageContext.request.contextPath}/saveEmpleado" method = "post">
+			<input type="submit" value="Agregar un nuevo empleado">
 		</form>
 		<h3>Listado de empleados</h3>
 		<table>

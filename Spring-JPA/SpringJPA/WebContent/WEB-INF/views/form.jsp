@@ -10,7 +10,7 @@
 </head>
 <body>
 	<font face="calibri,arial" color="#1C5FCD">
-		<h1>Editar sucursal</h1>
+		<h2>Editar sucursal</h2>
 	</font>
 	<font color="#2856A1" face="calibri,arial">
 		<form:form  action="${pageContext.request.contextPath}/formData" method="POST" modelAttribute="sucursales">

@@ -14,7 +14,7 @@
 			<form:input type="hidden" name="code" path="cSucursal" value="${sucursales.cSucursal}" />
 			
 			<font face="calibri,arial" color="#1C5FCD">
-				<h1>Perfil de sucursal <label>${sucursales.sNombre}</label></h1>
+				<h2>Perfil de sucursal <label>${sucursales.sNombre}</label></h2>
 			</font>
 			
 			<label>Ubicacion: </label>
@@ -33,10 +33,10 @@
 					<tr>
 						<td>${empleados.nomEmp}</td>
 					</tr>
-		</c:forEach>
+		</c:forEach><br>
 		<form action="${pageContext.request.contextPath}/verEmpleados" method="post">
 			<input type="hidden" value="${sucursales.cSucursal}" name="code">
-			<input type="submit" value="ver empleados">
+			<input type="submit" value="ver empleados"><br>
 		</form>
 		<form action="${pageContext.request.contextPath}/volver" method="post">
 			<input type="hidden" value="${sucursales.cSucursal}" name="code">

@@ -55,7 +55,6 @@ public class MainController {
 	public ModelAndView insert() {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("sucursales",new Sucursal());
-		//mav.addObject("student",new Student());
 		mav.setViewName("form");
 		return mav; 
 	}
@@ -117,7 +116,7 @@ public class MainController {
 	}
 	
 	//Controlador login
-	@RequestMapping(value="/login")
+	@RequestMapping(value="/")
 	public ModelAndView login() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("login");
@@ -145,7 +144,6 @@ public class MainController {
 		sucursales = sucursalService.findAll();
 		mav.addObject("code", code);
 		mav.addObject("sucursales",sucursales);
-		//mav.setViewName("main");
 		mav.setViewName("redirect:/prueba");
 		return mav; 
 	}
@@ -157,7 +155,6 @@ public class MainController {
 		empleados = empleadosService.findAll();
 		mav.addObject("code", code);
 		mav.addObject("empleados",empleados);
-		//mav.setViewName("main");
 		mav.setViewName("redirect:/verEmpleados");
 		return mav; 
 	}
@@ -166,10 +163,7 @@ public class MainController {
 	public ModelAndView verPerfil(@RequestParam(value="code") Integer code) {
 		ModelAndView mav = new ModelAndView();
 		Sucursal sucursales = new Sucursal();
-		//List<Empleado> empleados = null;
 		sucursales = sucursalService.findOne(code);
-		//empleados = sucursalService.findOne(code).getEmpleados();
-		//mav.addObject("empleados", empleados);
 		mav.addObject("sucursales",sucursales);
 		mav.setViewName("perfil");
 		return mav; 

@@ -10,7 +10,7 @@
 </head>
 <body>
 	<font face="calibri,arial" color="#1C5FCD">
-		<h1>Introducir informacion de empleado</h1>
+		<h2>Introducir informacion de empleado</h2>
 	</font>
 	<font color="#2856A1" face="calibri,arial">
 		<form:form  action="${pageContext.request.contextPath}/formDataEmpleado" method="POST" modelAttribute="empleados">
