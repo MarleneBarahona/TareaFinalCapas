@@ -30,6 +30,7 @@
 			<th>Ubicacion</th>
 			<th>Horario</th>
 			<th>Mesas</th>
+			<th>Gerente</th>
 		</tr>
 			<c:forEach items="${sucursales}" var="sucursales">
 				<tr>
@@ -39,7 +40,7 @@
 					<td>${sucursales.sNmesas}</td>
 					<td>${sucursales.sNomGerente}</td>
 					<td>
-					<form action="${pageContext.request.contextPath}/update" method="post">
+					<form action="${pageContext.request.contextPath}/perfil" method="post">
 						<input type=hidden value="${sucursales.cSucursal}" name="code">
 						<input type="submit" value="ver perfil">
 					</form>

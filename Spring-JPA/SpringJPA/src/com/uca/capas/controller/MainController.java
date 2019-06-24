@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.persistence.EntityManager;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -215,4 +213,13 @@ public class MainController {
 		return mav; 
 	}
 	
+	@RequestMapping(value="/perfil",method=RequestMethod.POST)
+	public ModelAndView verPerfil(@RequestParam(value="code") Integer code) {
+		ModelAndView mav = new ModelAndView();
+		Sucursal sucursales = new Sucursal();
+		sucursales = sucursalService.findOne(code);
+		mav.addObject("sucursales",sucursales);
+		mav.setViewName("perfil");
+		return mav; 
+	}
 }
