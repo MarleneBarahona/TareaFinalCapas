@@ -11,20 +11,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.uca.capas.dao.StudentDAO;
 import com.uca.capas.domain.Empleado;
-import com.uca.capas.domain.Student;
 import com.uca.capas.domain.Sucursal;
-import com.uca.capas.repositories.StudentRepository;
 import com.uca.capas.service.EmpleadoService;
-import com.uca.capas.service.StudentService;
 import com.uca.capas.service.SucursalService;
-
-/*import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;*/
 
 @Controller
 public class MainController {
@@ -33,41 +25,13 @@ public class MainController {
 	//Objeto Logger
 	static Logger log = Logger.getLogger(MainController.class.getName());
 	
-	//Objeto Singleton
-	@Autowired
-	private StudentDAO studentDao;
-	
-	@Autowired
-	private StudentService sService;
-	
 	@Autowired
 	private SucursalService sucursalService;
 	
 	@Autowired
 	private EmpleadoService empleadosService;
 	
-	@Autowired
-	private StudentRepository studentRepo;
-	
 	//Controlador principal
-	@RequestMapping("/")
-	public ModelAndView initMain(){
-		log.info("Entrando a funcion init-main " + log.getName());
-		ModelAndView mav = new ModelAndView();
-		List<Student> students = null;
-		try {
-		//Selecciono todos los elementos de la tabla
-		 students = sService.findAll();
-			log.info("Termino de buscar en la base de datos");
-		}
-		catch(Exception e){
-			log.log(Level.SEVERE,"Exception Occur",e);
-		}
-		mav.addObject("students",students);
-		mav.setViewName("main");
-		return mav;
-	}
-	
 	@RequestMapping(value="/prueba")
 	public ModelAndView prueba(){
 		log.info("Entrando a funcion init-main " + log.getName());
@@ -85,13 +49,6 @@ public class MainController {
 		return mav;
 	}
 	
-	//Controlador para busquedas por codigo
-	@RequestMapping(value="/search",method = RequestMethod.POST)
-	@ResponseBody
-	public Student search(@RequestParam(value = "code") Integer code) {
-		Student student = studentDao.findOne(code);
-		return student;
-	}
 	
 	//Controlador que lleva a formulario
 	@RequestMapping(value="/save",method=RequestMethod.POST)
@@ -158,19 +115,6 @@ public class MainController {
 		}
 		return mav;
 	}
-	//Controlador que implementa Spring Data
-	@RequestMapping(value = "/searchBy",method = RequestMethod.POST)
-	public ModelAndView searchBy(@RequestParam(value = "name") String name,@RequestParam(value="age") Integer age) {
-		ModelAndView mav = new ModelAndView();
-		//Busco por nombre
-		List<Student> studentsNameList = studentRepo.findBySName(name);
-		//Busco por edad
-		List<Student> studentsAgeList = studentRepo.findBySAge(age);
-		mav.addObject("studentsname",studentsNameList);
-		mav.addObject("studentsage",studentsAgeList);
-		mav.setViewName("find");
-		return mav; 
-	}
 	
 	//Controlador login
 	@RequestMapping(value="/login")
@@ -189,7 +133,6 @@ public class MainController {
 	}
 	@RequestMapping(value="/volver")
 	public ModelAndView volver() {
-		//aca debe ir el proceso para verificar que si son credenciales correctas
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/prueba");
 		return mav;
@@ -234,13 +177,9 @@ public class MainController {
 	
 	@RequestMapping(value="/verEmpleados")
 	public ModelAndView verEmpleados(){
-		//log.info("Entrando a funcion init-main " + log.getName());
 		ModelAndView mav = new ModelAndView();
 		List<Empleado> empleados = null;
-		//List<Sucursal> sucursales = null;
 		try {
-		//Selecciono todos los elementos de la tabla 
-		//sucursales = sucursalService.findAll();
 		 empleados = empleadosService.findAll();
 			log.info("Termino de buscar en la base de datos");
 		}
@@ -248,7 +187,6 @@ public class MainController {
 			log.log(Level.SEVERE,"Exception Occur",e);
 		}
 		mav.addObject("empleados",empleados);
-		//mav.addObject("students",students);
 		mav.setViewName("verEmpleados");
 		return mav;
 	}

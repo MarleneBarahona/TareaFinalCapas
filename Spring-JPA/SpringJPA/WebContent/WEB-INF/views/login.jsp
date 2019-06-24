@@ -7,11 +7,13 @@
 <title>Login</title>
 </head>
 <body>
+
+	<font face="calibri,arial" color="#2E70DD"> <h1>Bienvenido a Rustico</h1></font>
 	<font face="calibri,arial" color="#1C5FCD">
-		<h1>LOGIN</h1>
+		<h2>LOGIN</h2>
 			<form action="${pageContext.request.contextPath}/prueba" method="post">
-				<label>Ingrese correo:</label><br>
-				<input type="text" placeholder="usuario@gmail.com" name="email"><br><br>
+				<label>Ingrese usuario:</label><br>
+				<input type="text" placeholder="usuario1" name="email"><br><br>
 				<label>Ingrese contrasena:</label><br>
 				<input type="password" placeholder="pass123" name="password"><br><br>
 				<input type="submit" value="Entrar">

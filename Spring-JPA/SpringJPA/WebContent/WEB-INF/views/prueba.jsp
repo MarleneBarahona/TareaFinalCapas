@@ -9,13 +9,11 @@
 <title>Sucursales</title>
 </head>
 <body>
-	<font face="calibri,arial" color="#1C5FCD"> <h1>Bienvenido</h1></font>
 	<font color="#2856A1" face="calibri,arial">
-
+		<h2>Listado de sucursales</h2>
 		<form action="${pageContext.request.contextPath}/save" method = "post">
-		<input type="submit" value="Agregar una nueva sucursal"><br>
+			<input type="submit" value="Agregar una nueva sucursal"><br>
 		</form>
-		<h3>Listado de sucursales</h3>
 		<table>
 			<tr>
 				<th>Nombre</th>
@@ -46,7 +44,7 @@
 						<td>
 						<form action="${pageContext.request.contextPath}/delete" method="post">
 							<input type="hidden" value="${sucursales.cSucursal}" name="code">
-							<input type="submit" value="eliminar">
+							<input type="submit" value="eliminar" >
 						</form>
 						</td>
 					</tr>	
