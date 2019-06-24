@@ -11,11 +11,11 @@
 	<font face="calibri,arial" color="#2E70DD"> <h1>Bienvenido a Rustico</h1></font>
 	<font face="calibri,arial" color="#1C5FCD">
 		<h2>LOGIN</h2>
-			<form action="${pageContext.request.contextPath}/prueba" method="post">
+			<form action="${pageContext.request.contextPath}/verificar" method="post">
 				<label>Ingrese usuario:</label><br>
-				<input type="text" placeholder="usuario1" name="email"><br><br>
+				<input type="text" name="email"><br><br>
 				<label>Ingrese contrasena:</label><br>
-				<input type="password" placeholder="pass123" name="password"><br><br>
+				<input type="password" name="password"><br><br>
 				<input type="submit" value="Entrar">
 			</form>
 	</font>

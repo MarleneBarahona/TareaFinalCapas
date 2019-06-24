@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Sucursales</title>
+<title>Empleados</title>
 </head>
 <body>
 	<font color="#2856A1" face="calibri,arial">

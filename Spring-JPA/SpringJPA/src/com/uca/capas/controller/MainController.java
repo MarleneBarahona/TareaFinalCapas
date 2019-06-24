@@ -123,11 +123,15 @@ public class MainController {
 		return mav;
 	}
 	//Controlador verificar
-	@RequestMapping(value="/verificar")
-	public ModelAndView verificar() {
+	@RequestMapping(value="/verificar",method=RequestMethod.POST)
+	public ModelAndView verificar(@RequestParam(name = "email") String user, @RequestParam(name = "password") String pass) {
 		//aca debe ir el proceso para verificar que si son credenciales correctas
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("main");
+		if(user.isEmpty() || pass.isEmpty()) {
+			mav.setViewName("login");
+		}else {
+			mav.setViewName("redirect:/prueba");
+		}
 		return mav;
 	}
 	@RequestMapping(value="/volver")
